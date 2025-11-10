@@ -220,7 +220,9 @@ main {
   display: block;
   border-radius: 0.5rem; /* optional */
 }
-
+.project-hero {
+  margin-bottom: 2rem;
+}
 
 /* =========================
    Mobile (<=768px)
