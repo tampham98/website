@@ -224,6 +224,10 @@ main {
   margin-bottom: 2rem;
 }
 
+.highlight {
+  color: #C50752; /* example magenta — swap to your brand color */
+}
+
 /* =========================
    Mobile (<=768px)
 ========================= */
