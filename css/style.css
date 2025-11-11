@@ -234,6 +234,7 @@ main {
   column-count: 1;
   column-gap: 2rem;         /* gutter between columns */
   margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 
 @media (min-width: 760px) {
