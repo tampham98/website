@@ -238,7 +238,7 @@ main {
 }
 
 @media (min-width: 760px) {
-  .project-masonry { column-count: 1; }
+  .project-masonry { column-count: 2; }
 }
 
 .m-item {
