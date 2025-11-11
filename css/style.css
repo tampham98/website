@@ -109,6 +109,10 @@ body {
 }
 .icon-linkedin { width: 1.25rem; height: 1.25rem; }
 
+/* Remove decorative rule from LinkedIn */
+.sidebar nav a.nav-linkedin::before {
+  content: none;
+}
 
 /* Hamburger hidden on desktop */
 .menu-toggle {
