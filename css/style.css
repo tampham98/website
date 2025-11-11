@@ -85,6 +85,30 @@ body {
 .sidebar nav a:hover::before { opacity: 1; width: 80px; background-color: #C50752; }
 .sidebar nav a.active::before { opacity: 1; width: 80px; background-color: #C50752; }
 
+.nav-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.nav-linkedin:hover {
+  color: var(--accent-color);   /* adjust to your accent */
+  opacity: 1;
+}
+
+.icon-linkedin {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+}
+.icon-linkedin { width: 1.25rem; height: 1.25rem; }
+
 
 /* Hamburger hidden on desktop */
 .menu-toggle {
@@ -185,26 +209,6 @@ main {
 .skills { display: flex; flex-wrap: wrap; list-style: none; }
 .skills li { font-size: 1rem; color: #2C5282; font-weight: 500; }
 
-/* LinkedIn CTA */
-.linkedin-cta {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #F2F2F2;
-  font-weight: bold;
-  font-size: 1.25rem;
-  color: #C50752;
-  text-decoration: none;
-  border-radius: 6px;
-  position: relative;
-  transition: transform 0.2s ease;
-}
-.linkedin-cta .ext-arrow {
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: -0.25em;
-  display: inline-block;
-}
-.linkedin-cta:hover { transform: translateY(-5px); }
 
 /* Contact links */
 #contact p a { color: #F48FB1; text-decoration: none; }
