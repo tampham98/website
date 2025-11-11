@@ -225,8 +225,33 @@ main {
 }
 
 .highlight {
-  color: #C50752; /* example magenta — swap to your brand color */
+  color: #C50752;
+  font-weight: 400; 
 }
+
+/* Masonry: two columns on desktop, one on mobile */
+.project-masonry {
+  column-count: 1;
+  column-gap: 1.25rem;         /* gutter between columns */
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 760px) {
+  .project-masonry { column-count: 2; }
+}
+
+.m-item {
+  break-inside: avoid;          /* keep each figure intact */
+  margin: 0 0 1.25rem;
+}
+
+.m-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: .5rem;         /* match your style */
+}
+
 
 /* =========================
    Mobile (<=768px)
