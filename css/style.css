@@ -325,7 +325,7 @@ main {
     z-index: 1000;
     width: 100%;
     height: auto;
-    padding: .5rem .8rem; /* ↓ shorter bar */
+    padding: .4rem .8rem; /* ↓ shorter bar */
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
     flex: 0 0 auto;
@@ -335,9 +335,9 @@ main {
   .sidebar-inner {
     position: static;                     /* disable inner sticky on mobile */
     display: flex;                        /* row */
-    align-items: center;
+    align-items: haseline;
     justify-content: space-between;
-    gap: .75rem;
+    gap: .5rem;
     width: 100%;
   }
 
@@ -346,6 +346,7 @@ main {
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
+    transform: translateY(2px);
   }
 
   /* Hamburger: visible & right-aligned */
@@ -358,10 +359,11 @@ main {
     margin-left: auto;
     flex-shrink: 0;
     background: none;
-    border: 0;
+    border: none;
     padding: .25rem;
     cursor: pointer;
     z-index: 1002;
+    transform: translateY(1px);
   }
   .menu-toggle svg { width: 24px; height: 24px; }
   .menu-toggle svg rect { fill: #000; }
