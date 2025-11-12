@@ -14,6 +14,24 @@ body {
   justify-content: center;
 }
 
+/* Height-responsive spacing for sidebar + main */
+:root{
+  /* tweak the middle numbers to taste */
+  --sidebar-top: clamp(12px, 4vh, 32px);
+  --logo-gap:   clamp(12px, 6vh, 96px);
+  --main-top:   clamp(16px, 5vh, 48px);
+}
+
+/* Sidebar: add height-aware top padding */
+.sidebar { padding-block-start: var(--sidebar-top); }
+
+/* Logo: replace width-based % gap with vh-based gap */
+.logo { margin-bottom: var(--logo-gap); }
+
+/* Main content: height-aware top padding */
+main { padding-top: var(--main-top); }
+
+/* Highlight text */
 .highlight {
   color: #C50752;
   font-weight: 500; 
@@ -28,14 +46,13 @@ body {
   align-items: stretch;      /* allow sidebar column to match main height */
 }
 
-/* =========================
-   Sidebar (Desktop)
-========================= */
+/* ===== Sidebar (Desktop) ===== */
 .sidebar {
   position: relative;        
   width: 300px;
   background: #F2F2F2;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem;            /* keep your base padding */
+  padding-block-start: var(--sidebar-top); /* height-aware top pad */
 
   /* layout */
   display: flex;
@@ -44,38 +61,47 @@ body {
   align-items: stretch;
   gap: 1.25rem;
 
-  /* make it height-aware */
-  height: 100vh;             /* full viewport height */
+  /* height-aware */
+  height: 100vh;                 /* full viewport height */
 }
 
 /* Sticky inner wrapper that adapts to short viewports */
 .sidebar-inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;              /* fill sidebar */
   position: sticky;
   top: 2rem;
   z-index: 100;
+
+  /* make the column height-aware + proportional */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: clamp(8px, 2.5vh, 28px);   /* proportional vertical rhythm */
 }
 
+/* Logo — consolidated (remove the later 20% version) */
 .logo {
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 20%;
   color: #000;
+  margin-bottom: var(--logo-gap); /* vh-based, from :root */
 }
 
-/* Let the nav section shrink/scroll if height gets tight */
+/* Nav block: sits lower, but capped; scrolls if too tall */
 #site-nav {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 0;             /* REQUIRED for flexbox scrolling */
-  overflow-y: auto;          /* enables scroll when too tall */
+  flex: 1 1 auto;                /* can grow/shrink */
+  min-height: 0;                 /* REQUIRED for flex scroll */
+  overflow-y: auto;              /* scroll only when needed */
   gap: 1rem;
-  padding-right: .25rem;     /* prevents scrollbar overlap */
+  padding-right: .25rem;
+
+  /* 2b: bias nav “down” without breaking short screens */
+  margin-block-start: clamp(8px, 8vh, 20vh);   /* pushes nav lower on tall viewports */
+  max-height: clamp(240px, 62vh, 70vh);        /* never too tall, still roomy on big screens */
 }
 
+/* Keep your list + link styles (unchanged) */
 .sidebar nav ul { list-style: none; padding: 0; margin: 0; }
 .sidebar nav li { margin-bottom: 1rem; }
 
@@ -103,27 +129,18 @@ body {
 }
 
 .sidebar nav a:hover,
-.sidebar nav a.active {
-  color: #C50752;
-}
-
+.sidebar nav a.active { color: #C50752; }
 .sidebar nav a:hover::before,
 .sidebar nav a.active::before {
-  opacity: 1;
-  width: 80px;
-  background-color: #C50752;
+  opacity: 1; width: 80px; background-color: #C50752;
 }
 
-/* LinkedIn link — same style but no rule */
-.sidebar nav a.nav-linkedin::before {
-  content: none;
-}
+/* LinkedIn — same style, no rule, pinned at bottom of the nav column */
+.sidebar nav a.nav-linkedin::before { content: none; }
+.sidebar nav a.nav-linkedin { margin-top: auto; }
 
-.sidebar nav a.nav-linkedin {
-  margin-top: auto;   /* bigger gap on desktop */
-}
 
-/* icon sizing only */
+/* icon sizing */
 .icon-linkedin {
   width: 1rem; /* tweak size to taste */
   height: 1rem;
@@ -359,4 +376,22 @@ main {
   .project-grid { grid-template-columns: 1fr; }
   .experience-card { flex-direction: column; gap: .75rem; }
   .experience-date { flex: none; width: 80%; margin-bottom: 0; }
+}
+
+/* =========================
+   Short desktops(short height)
+========================= */
+@media (max-height: 800px) and (min-width: 769px) {
+  .logo { font-size: 2.2rem; }
+  #site-nav { gap: 0.75rem; }
+  .sidebar nav a { gap: 0.75rem; }
+}
+
+@media (max-height: 700px) and (min-width: 769px) {
+  .logo { font-size: 2rem; }
+  #site-nav { gap: 0.6rem; }
+  .sidebar nav a { gap: 0.6rem; }
+  .sidebar nav a::before { width: 32px; }
+  .sidebar nav a:hover::before,
+  .sidebar nav a.active::before { width: 56px; }
 }
