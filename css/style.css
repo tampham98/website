@@ -14,22 +14,31 @@ body {
   justify-content: center;
 }
 
-/* Height-responsive spacing for sidebar + main */
-:root{
-  /* tweak the middle numbers to taste */
-  --sidebar-top: clamp(12px, 4vh, 32px);
-  --logo-gap:   clamp(12px, 6vh, 96px);
-  --main-top:   clamp(16px, 5vh, 48px);
+/* Height-responsive spacing entire page */
+:root {
+  --top-align: clamp(20px, 4.5vh, 48px); /* shared vertical baseline */
+  --logo-gap: clamp(12px, 6vh, 96px);
 }
 
 /* Sidebar: add height-aware top padding */
-.sidebar { padding-block-start: var(--sidebar-top); }
+.sidebar { padding-block-start: var(--top-align); }
 
 /* Logo: replace width-based % gap with vh-based gap */
-.logo { margin-bottom: var(--logo-gap); }
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-top: 0.2em;              /* tiny nudge for optical alignment */
+  margin-bottom: var(--logo-gap); /* space below logo */
+}
 
 /* Main content: height-aware top padding */
-main { padding-top: var(--main-top); }
+main {
+  flex: 1;
+  padding-top: var(--top-align);
+  padding-inline: 3rem; /* keep your side padding */
+  max-width: 1280px;
+}
 
 /* Highlight text */
 .highlight {
@@ -52,7 +61,6 @@ main { padding-top: var(--main-top); }
   width: 300px;
   background: #F2F2F2;
   padding: 2rem 1rem;            /* keep your base padding */
-  padding-block-start: var(--sidebar-top); /* height-aware top pad */
 
   /* layout */
   display: flex;
