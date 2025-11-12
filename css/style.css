@@ -312,7 +312,7 @@ main {
    Mobile (<=768px)
 ========================= */
 @media (max-width: 768px) {
-  :root { --mobile-header-h: 88px; }      /* adjust to your header height */
+  :root { --mobile-header-h: 60px; }      /* adjust to your header height */
   .section { scroll-margin-top: var(--mobile-header-h); }
 
   /* Layout stacks */
@@ -346,7 +346,7 @@ main {
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
-    transform: translateY(2px);
+    transform: translateY(4px);
   }
 
   /* Hamburger: visible & right-aligned */
