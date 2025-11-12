@@ -363,7 +363,7 @@ main {
     padding: .25rem;
     cursor: pointer;
     z-index: 1002;
-    transform: translateY(1px);
+    transform: translateY(-5px);
   }
   .menu-toggle svg { width: 24px; height: 24px; }
   .menu-toggle svg rect { fill: #000; }
