@@ -353,8 +353,6 @@ main {
   /* Remove decorative line in compact menu */
   .sidebar nav a::before { display: none; }
 
-    /* MOBILE OVERRIDE: keep LinkedIn tight on mobile */
-  .sidebar nav a.nav-linkedin { margin-top: auto; }  
 
   /* Content adjustments */
   main { padding: 1rem; }
