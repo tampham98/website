@@ -325,50 +325,56 @@ main {
     z-index: 1000;
     width: 100%;
     height: auto;
-    padding: .75rem 1rem;
+    padding: .5rem .9rem; /* ↓ shorter bar */
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
     flex: 0 0 auto;
   }
 
-  /* Put logo + hamburger on one row */
-  .sidebar-inner {
-    position: static;                     /* disable inner sticky on mobile */
-    display: flex;                        /* row */
-    align-items: center;
-    gap: .75rem;
-    width: 100%;
-  }
+/* Sidebar header row */
+.sidebar-inner {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* ✅ pushes hamburger to the right */
+  width: 100%;
+  gap: 0;                           /* no unnecessary gaps */
+}
 
-  .logo {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    line-height: 1;
-    flex: 0 1 auto;
-    z-index: 1002;
-  }
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  margin: 0;
+  flex-shrink: 0;                   /* ✅ prevents logo from shrinking */
+}
 
-  /* Hamburger: visible & right-aligned */
-  .menu-toggle {
-    display: inline-flex;
-    margin-left: auto;                    /* push to the right */
-    background: none;
-    border: 0;
-    padding: .25rem;
-    cursor: pointer;
-  }
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;                /* ✅ ensures it hugs the right edge */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1002;                    /* ✅ keeps it clickable above logo */
+}
+  .menu-toggle svg { width: 24px; height: 24px; }
   .menu-toggle svg rect { fill: #000; }
 
   /* Dropdown nav (hidden until toggled) */
   #site-nav {
     display: none;
     position: absolute;                   /* anchored to sticky .sidebar */
-    top: calc(100% + 8px);
-    right: 1rem;
+    top: calc(100% + 6px); /* hugs header a bit tighter */
+    right: .9rem;
     background: #F2F2F2;
     border: 1px solid #383838;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: .75rem 1rem;
     min-width: 180px;
     z-index: 1001;
@@ -378,9 +384,14 @@ main {
   #site-nav ul {
     display: flex;
     flex-direction: column;
-    gap: .75rem;
+    gap: .55rem;
     margin: 0;
     padding: 0;
+  }
+
+  /* …but extra delineation before LinkedIn */
+  .sidebar nav a.nav-linkedin {
+  margin-top: .9rem;                /* bigger gap than other items */
   }
 
   /* Remove decorative line in compact menu */
@@ -393,6 +404,7 @@ main {
   .experience-card { flex-direction: column; gap: .75rem; }
   .experience-date { flex: none; width: 80%; margin-bottom: 0; }
 }
+
 /* =========================
    Short desktops(short height)
 ========================= */
