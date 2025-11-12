@@ -312,7 +312,7 @@ main {
    Mobile (<=768px)
 ========================= */
 @media (max-width: 768px) {
-  :root { --mobile-header-h: 88px; }      /* adjust to your header height */
+  :root { --m-header-h: clamp(52px, 7vh, 60px); }
   .section { scroll-margin-top: var(--mobile-header-h); }
 
   /* Layout stacks */
@@ -320,50 +320,59 @@ main {
 
   /* Sidebar becomes top header bar */
   .sidebar {
-    position: sticky;                     /* pin whole header */
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-    height: auto;
-    padding: .5rem .9rem; /* ↓ shorter bar */
-    border-bottom: 1px solid #383838;
-    background: #F2F2F2;
-    flex: 0 0 auto;
-  }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  /* remove vertical padding; let height control the bar */
+  padding: 0 .9rem;
+  min-height: var(--m-header-h);
+  border-bottom: 1px solid #383838;
+  background: #F2F2F2;
+  display: flex;               /* ensure centering even if inner wraps */
+  align-items: center;
+}
 
-/* Sidebar header row */
+/* Header row */
 .sidebar-inner {
   position: static;
   display: flex;
-  align-items: center;
-  justify-content: space-between;   /* ✅ pushes hamburger to the right */
+  align-items: center;         /* vertical centering */
+  justify-content: space-between;
   width: 100%;
-  gap: 0;                           /* no unnecessary gaps */
+  height: var(--m-header-h);   /* match the bar height */
 }
 
+/* Logo: optical baseline lift */
 .logo {
+  margin: 0;
   font-size: 1.6rem;
   font-weight: 700;
   line-height: 1;
-  color: #000;
-  margin: 0;
-  flex-shrink: 0;                   /* ✅ prevents logo from shrinking */
+  flex-shrink: 0;
+  transform: translateY(1px);  /* 👈 tiny nudge up; try 1–2px */
 }
 
+/* Hamburger: right, with slight optical lift */
 .menu-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 40px;
-  margin-left: auto;                /* ✅ ensures it hugs the right edge */
+  height: 40px;                /* good tap target */
+  margin-left: auto;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  z-index: 1002;                    /* ✅ keeps it clickable above logo */
+  z-index: 1002;
 }
-  .menu-toggle svg { width: 24px; height: 24px; }
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  display: block;              /* removes stray inline descenders */
+  transform: translateY(-1px); /* 👈 lift icon a hair */
+}
   .menu-toggle svg rect { fill: #000; }
 
   /* Dropdown nav (hidden until toggled) */
