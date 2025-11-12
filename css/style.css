@@ -100,9 +100,8 @@ body {
   content: none;
 }
 
-/* LinkedIn spacing */
 .sidebar nav a.nav-linkedin {
-  margin-top: 1.75rem;   /* add spacing above */
+  margin-top: 1.5rem;   /* bigger gap on desktop */
 }
 
 /* icon sizing only */
@@ -338,6 +337,9 @@ main {
 
   /* Remove decorative line in compact menu */
   .sidebar nav a::before { display: none; }
+
+    /* MOBILE OVERRIDE: keep LinkedIn tight on mobile */
+  .sidebar nav a.nav-linkedin { margin-top: 0.25rem; }  
 
   /* Content adjustments */
   main { padding: 1rem; }
