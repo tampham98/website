@@ -32,22 +32,27 @@ body {
    Sidebar (Desktop)
 ========================= */
 .sidebar {
-  position: relative;        /* outer stays normal on desktop */
-  top: auto;
+  position: relative;        
   width: 300px;
-  height: auto;
   background: #F2F2F2;
   padding: 2rem 1rem;
 
+  /* layout */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
   gap: 1.25rem;
+
+  /* make it height-aware */
+  height: 100vh;             /* full viewport height */
 }
 
-/* Sticky wrapper inside the sidebar (desktop pin) */
+/* Sticky inner wrapper that adapts to short viewports */
 .sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;              /* fill sidebar */
   position: sticky;
   top: 2rem;
   z-index: 100;
@@ -60,7 +65,17 @@ body {
   color: #000;
 }
 
-.sidebar nav { margin-top: .25rem; }
+/* Let the nav section shrink/scroll if height gets tight */
+#site-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;             /* REQUIRED for flexbox scrolling */
+  overflow-y: auto;          /* enables scroll when too tall */
+  gap: 1rem;
+  padding-right: .25rem;     /* prevents scrollbar overlap */
+}
+
 .sidebar nav ul { list-style: none; padding: 0; margin: 0; }
 .sidebar nav li { margin-bottom: 1rem; }
 
@@ -105,7 +120,7 @@ body {
 }
 
 .sidebar nav a.nav-linkedin {
-  margin-top: 2.5rem;   /* bigger gap on desktop */
+  margin-top: auto;   /* bigger gap on desktop */
 }
 
 /* icon sizing only */
