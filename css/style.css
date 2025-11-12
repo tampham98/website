@@ -343,10 +343,10 @@ main {
 
   .logo {
     margin: 0;
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1;
-    transform: translateY(4px);
+    transform: translateY(10px);
   }
 
   /* Hamburger: visible & right-aligned */
@@ -363,7 +363,7 @@ main {
     padding: .25rem;
     cursor: pointer;
     z-index: 1002;
-    transform: translateY(-5px);
+    transform: translateY(-8px);
   }
   .menu-toggle svg { width: 24px; height: 24px; }
   .menu-toggle svg rect { fill: #000; }
