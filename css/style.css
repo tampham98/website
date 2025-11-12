@@ -275,10 +275,6 @@ main {
   margin-bottom: 4rem;
 }
 
-@media (min-width: 760px) {
-  .project-masonry { column-count: 2; }
-}
-
 .m-item {
   break-inside: avoid;          /* keep each figure intact */
   margin: 0 0 1.25rem;
@@ -291,6 +287,18 @@ main {
   border-radius: .5rem;         /* match your style */
 }
 
+/* =========================
+   Desktop only (>=769px)
+========================= */
+@media (min-width: 769px) {
+  /* Masonry layout */
+  .project-masonry { column-count: 2; }
+
+  /* Extra LinkedIn spacing on desktop */
+  .sidebar nav a.nav-linkedin {
+    margin-top: 2em; /* gives visual separation */
+  }
+}
 
 /* =========================
    Mobile (<=768px)
