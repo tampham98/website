@@ -23,7 +23,7 @@ body {
   display: flex;
   width: 100%;
   max-width: 1400px;
-  padding: 3rem 0rem;
+  padding: 1% 0%;
   gap: 2.5rem;
   align-items: stretch;      /* allow sidebar column to match main height */
 }
