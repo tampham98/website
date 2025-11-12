@@ -325,7 +325,7 @@ main {
     z-index: 1000;
     width: 100%;
     height: auto;
-    padding: .4rem .5rem; /* ↓ shorter bar */
+    padding: 0rem .8rem; /* ↓ shorter bar */
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
     flex: 0 0 auto;
