@@ -325,7 +325,7 @@ main {
     z-index: 1000;
     width: 100%;
     height: auto;
-    padding: .75rem 1rem;
+    padding: .5rem .9rem; /* ↓ shorter bar */
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
     flex: 0 0 auto;
@@ -336,39 +336,43 @@ main {
     position: static;                     /* disable inner sticky on mobile */
     display: flex;                        /* row */
     align-items: center;
+    justify-content: space-between;
     gap: .75rem;
     width: 100%;
   }
 
   .logo {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
-    flex: 0 1 auto;
-    z-index: 1002;
   }
 
   /* Hamburger: visible & right-aligned */
   .menu-toggle {
     display: inline-flex;
-    margin-left: auto;                    /* push to the right */
+    align-items: center;
+    justify-content: center;
+    width: 40px;                      /* 40–44px is great for touch */
+    height: 40px;
+    margin-left: 0;
     background: none;
     border: 0;
     padding: .25rem;
     cursor: pointer;
   }
+  .menu-toggle svg { width: 24px; height: 24px; }
   .menu-toggle svg rect { fill: #000; }
 
   /* Dropdown nav (hidden until toggled) */
   #site-nav {
     display: none;
     position: absolute;                   /* anchored to sticky .sidebar */
-    top: calc(100% + 8px);
-    right: 1rem;
+    top: calc(100% + 6px); /* hugs header a bit tighter */
+    right: .9rem;
     background: #F2F2F2;
     border: 1px solid #383838;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: .75rem 1rem;
     min-width: 180px;
     z-index: 1001;
@@ -378,9 +382,14 @@ main {
   #site-nav ul {
     display: flex;
     flex-direction: column;
-    gap: .75rem;
+    gap: .55rem;
     margin: 0;
     padding: 0;
+  }
+
+  /* …but extra delineation before LinkedIn */
+  .sidebar nav a.nav-linkedin {
+  margin-top: .9rem;                /* bigger gap than other items */
   }
 
   /* Remove decorative line in compact menu */
