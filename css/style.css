@@ -354,7 +354,7 @@ main {
   .sidebar nav a::before { display: none; }
 
     /* MOBILE OVERRIDE: keep LinkedIn tight on mobile */
-  .sidebar nav a.nav-linkedin { margin-top: 0.25rem; }  
+  .sidebar nav a.nav-linkedin { margin-top: auto; }  
 
   /* Content adjustments */
   main { padding: 1rem; }
