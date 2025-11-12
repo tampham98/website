@@ -62,7 +62,7 @@ body {
 
 .sidebar nav { margin-top: .25rem; }
 .sidebar nav ul { list-style: none; padding: 0; margin: 0; }
-.sidebar nav li { margin-bottom: 1.25rem; }
+.sidebar nav li { margin-bottom: 1rem; }
 
 /* Nav links + decorative line */
 .sidebar nav a {
