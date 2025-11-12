@@ -335,7 +335,7 @@ main {
   .sidebar-inner {
     position: static;                     /* disable inner sticky on mobile */
     display: flex;                        /* row */
-    align-items: haseline;
+    align-items: baseline;
     justify-content: space-between;
     gap: .5rem;
     width: 100%;
