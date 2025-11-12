@@ -312,7 +312,7 @@ main {
    Mobile (<=768px)
 ========================= */
 @media (max-width: 768px) {
-  :root { --mobile-header-h: 60px; }      /* adjust to your header height */
+  :root { --mobile-header-h: 50px; }      /* adjust to your header height */
   .section { scroll-margin-top: var(--mobile-header-h); }
 
   /* Layout stacks */
@@ -325,7 +325,7 @@ main {
     z-index: 1000;
     width: 100%;
     height: auto;
-    padding: .4rem .8rem; /* ↓ shorter bar */
+    padding: .4rem .5rem; /* ↓ shorter bar */
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
     flex: 0 0 auto;
