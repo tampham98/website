@@ -312,7 +312,7 @@ main {
    Mobile (<=768px)
 ========================= */
 @media (max-width: 768px) {
-  :root { --mobile-header-h: 50px; }      /* adjust to your header height */
+  :root { --mobile-header-h: 30px; }      /* adjust to your header height */
   .section { scroll-margin-top: var(--mobile-header-h); }
 
   /* Layout stacks */
