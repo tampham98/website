@@ -372,7 +372,7 @@ main {
   #site-nav {
     display: none;
     position: absolute;                   /* anchored to sticky .sidebar */
-    top: calc(100% + 2px); /* hugs header a bit tighter */
+    top: calc(100% + 1px); /* hugs header a bit tighter */
     right: .9rem;
     background: #F2F2F2;
     border: 1px solid #383838;
