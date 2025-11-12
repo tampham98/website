@@ -312,8 +312,7 @@ main {
    Mobile (<=768px)
 ========================= */
 @media (max-width: 768px) {
-  :root { --mobile-header-h: 88px; }      /* adjust to your header height */
-  .section { scroll-margin-top: var(--mobile-header-h); }
+  :root { --mobile-header-h: 60px; }      /* adjust to your header height */
 
   /* Layout stacks */
   .page-layout { flex-direction: column; gap: .75rem; }
@@ -325,20 +324,21 @@ main {
     z-index: 1000;
     width: 100%;
     height: auto;
-    padding: .4rem .8rem; /* ↓ shorter bar */
+    padding: 0rem .9rem; /* ↓ shorter bar */
+    min-height:var(--mobile-header-h)
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
-    flex: 0 0 auto;
-  }
+    display: flex;
+    align-items: center; 
+    }
 
   /* Put logo + hamburger on one row */
   .sidebar-inner {
-    position: static;                     /* disable inner sticky on mobile */
-    display: flex;                        /* row */
-    align-items: haseline;
+    display: flex;             
+    align-items: center;
     justify-content: space-between;
-    gap: .5rem;
     width: 100%;
+    height: var(--mobile-header-h);
   }
 
   .logo {
@@ -346,7 +346,7 @@ main {
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 1;
-    transform: translateY(2px);
+    transform: translateY(1px);
   }
 
   /* Hamburger: visible & right-aligned */
@@ -359,13 +359,17 @@ main {
     margin-left: auto;
     flex-shrink: 0;
     background: none;
-    border: none;
-    padding: .25rem;
+    border: 0;
+    padding: 0;
     cursor: pointer;
     z-index: 1002;
-    transform: translateY(1px);
   }
-  .menu-toggle svg { width: 24px; height: 24px; }
+  .menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  display: block;                 /* removes inline descender gap */
+  transform: translateY(-1px);    /* ↓ lowers icon’s visual center slightly */
+}
   .menu-toggle svg rect { fill: #000; }
 
   /* Dropdown nav (hidden until toggled) */
