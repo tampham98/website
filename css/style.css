@@ -335,7 +335,7 @@ main {
 
   /* Put logo + hamburger on one row */
   .sidebar-inner {
-    position: static;                     /* disable inner sticky on mobile */
+    position: absolute;                     /* disable inner sticky on mobile */
     display: flex;                        /* row */
     justify-content: space-between;
     gap: .5rem;
