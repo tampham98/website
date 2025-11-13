@@ -326,9 +326,11 @@ main {
     width: 100%;
     height: auto;
     padding: 0rem .8rem; /* ↓ shorter bar */
+    min-height: var(--mobile-header-h);
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
-    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
   }
 
   /* Put logo + hamburger on one row */
@@ -339,11 +341,12 @@ main {
     justify-content: space-between;
     gap: .5rem;
     width: 100%;
+    height: var(--mobile-header-h);
   }
 
   .logo {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     line-height: 1;
     transform: translateY(-2px);
