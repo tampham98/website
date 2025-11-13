@@ -378,7 +378,6 @@ main {
     line-height: 0;
     cursor: pointer;
     z-index: 1002;             /* just for stacking, not positioning */
-    transform: translateY(-3px);   /* ← MOVE BUTTON UP */
   }
   .menu-toggle svg { width: 24px; height: 24px; }
   .menu-toggle svg rect { fill: #000; }
@@ -398,6 +397,7 @@ main {
     padding: .75rem 1rem;
     min-width: 180px;
     z-index: 1001;
+    transform: translateY(-3px);   /* ← MOVE UP */
   }
   #site-nav.active { display: block; }
 
