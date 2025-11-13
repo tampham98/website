@@ -346,7 +346,7 @@ main {
     font-size: 2rem;
     font-weight: 700;
     line-height: 1;
-    transform: translateY(2px);
+    transform: translateY(-2px);
   }
 
   /* Hamburger: visible & right-aligned */
@@ -363,7 +363,7 @@ main {
     padding: .25rem;
     cursor: pointer;
     z-index: 1002;
-    transform: translateY(-2px);
+    transform: none;
   }
   .menu-toggle svg { width: 24px; height: 24px; }
   .menu-toggle svg rect { fill: #000; }
@@ -372,8 +372,8 @@ main {
   #site-nav {
     display: none;
     position: absolute;                   /* anchored to sticky .sidebar */
-    top: calc(100% + 1px); /* hugs header a bit tighter */
-    right: .9rem;
+    top: calc(100% + 0px); /* hugs header a bit tighter */
+    right: 0rem;
     background: #F2F2F2;
     border: 1px solid #383838;
     border-radius: 10px;
