@@ -326,7 +326,7 @@ main {
     width: 100%;
     height: auto;
     padding: 0 .8rem; /* no vertical padding */
-    min-height: var(--mobile-header-h);
+    min-height: auto;
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
     display: flex;
@@ -349,7 +349,7 @@ main {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1;
-    transform: translateY(2px);
+    transform: none;
   }
 
   /* Hamburger */
