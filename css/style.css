@@ -341,7 +341,7 @@ main {
     justify-content: space-between;
     gap: .5rem;
     width: 100%;
-    height: var(--mobile-header-h);
+    height: auto;
   }
 
   .logo {
@@ -385,7 +385,7 @@ main {
     z-index: 1001;
   }
   #site-nav.active { display: block; }
-  
+
 /* Compact list spacing; no decorative rules in dropdown */
   #site-nav ul {
     display: flex;
