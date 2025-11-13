@@ -325,23 +325,23 @@ main {
     z-index: 1000;
     width: 100%;
     height: auto;
-    padding: .25rem .8rem; /* ↓ shorter bar */
+    padding: 0 .8rem; /* no vertical padding */
     min-height: var(--mobile-header-h);
     border-bottom: 1px solid #383838;
     background: #F2F2F2;
     display: flex;
-    align-items: center;
+    align-items: center; /* centers the inner row vertically */
   }
 
-  /* Put logo + hamburger on one row */
+  /* logo + hamburger */
   .sidebar-inner {
-    position: relative;                     /* disable inner sticky on mobile */
-    display: flex;                        /* row */
-    justify-content: flex-start; 
+    position: relative;    /* needed for #site-nav absolute positioning */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: .5rem;
     width: 100%;
     height: var(--mobile-header-h);
-    align-items: left;
   }
 
   .logo {
@@ -354,23 +354,18 @@ main {
 
   /* Hamburger */
   .menu-toggle {
-    position: absolute;                /* new: lets us place it precisely */
-    top: 50%;                          /* vertically center inside sidebar-inner */
-    right: 0.8rem;                     /* controls horizontal spacing */
-    transform: translateY(-50%);       /* centers icon perfectly */
+    position: static;                 /* ← flex item (no absolute) */
+    margin-left: auto;                /* push to right if needed */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;                      /* 40–44px is great for touch */
-    height: 40px;
-    margin-left: auto;
-    flex-shrink: 0;
+    width: 40px; height: 40px;        /* comfy tap target */
     background: none;
     border: none;
     padding: 0;
     line-height: 0;
     cursor: pointer;
-    z-index: 1002;
+    z-index: 1002;                    /* stacking only, not positioning */
     transform: none;
   }
   .menu-toggle svg { width: 24px; height: 24px; }
@@ -379,18 +374,19 @@ main {
   /* Dropdown nav (hidden until toggled) */
   #site-nav {
     display: none;
-    position: absolute;                   /* anchored to sticky .sidebar */
+    position: absolute;    /* anchored to .sidebar-inner */
     top: 100%;
-    right: 0rem;
+    right: 0;
     background: #F2F2F2;
     border: 1px solid #383838;
     border-radius: 10px;
-    padding: 0rem 1rem;
+    padding: .75rem 1rem;
     min-width: 180px;
     z-index: 1001;
   }
   #site-nav.active { display: block; }
-
+  
+/* Compact list spacing; no decorative rules in dropdown */
   #site-nav ul {
     display: flex;
     flex-direction: column;
