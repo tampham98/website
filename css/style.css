@@ -309,6 +309,14 @@ main {
   border-radius: .5rem;         /* match your style */
 }
 
+/* Global subtle image shadow */
+.project-card img,
+.m-item img,
+.project-hero img {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+
 /* =========================
    Desktop only (>=769px)
 ========================= */
