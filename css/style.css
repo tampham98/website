@@ -32,6 +32,13 @@ body {
   margin-bottom: var(--logo-gap); /* space below logo */
 }
 
+.logo a {
+  color: inherit;      /* keeps your existing logo color */
+  text-decoration: none;
+  display: inline-block; /* optional but recommended */
+}
+
+
 /* Main content: height-aware top padding */
 main {
   flex: 1;
