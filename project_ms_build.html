@@ -136,50 +136,122 @@
 
   </div>
 
-  <!-- JS: must stay at bottom -->
   <script>
-    // ===== Cache DOM refs =====
-    const sections = document.querySelectorAll('section');
-    const siteNav = document.getElementById('site-nav');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navTopLinks = siteNav.querySelectorAll('ul > li > a');
+// ================================
+// NAV + SCROLL HIGHLIGHT
+// ================================
 
-    // ===== Scroll handler: set active link =====
-    function setActiveOnScroll() {
-      let current = '';
-      const offset = 120;
+// ===== Cache DOM refs =====
+const sections   = document.querySelectorAll('section');
+const siteNav    = document.getElementById('site-nav');
+const menuToggle = document.querySelector('.menu-toggle');
+const navTopLinks = siteNav ? siteNav.querySelectorAll('ul > li > a') : [];
 
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - offset;
-        if (window.scrollY >= sectionTop) current = section.id;
-      });
+// ===== Scroll handler: set active link =====
+function setActiveOnScroll() {
+  if (!sections.length || !navTopLinks.length) return;
 
-      navTopLinks.forEach(link => {
-        link.classList.toggle(
-          'active',
-          link.getAttribute('href') === `#${current}`
-        );
-      });
+  let current = '';
+  const offset = 120; // adjust if header height changes
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - offset;
+    if (window.scrollY >= sectionTop) current = section.id;
+  });
+
+  navTopLinks.forEach(link => {
+    const href = link.getAttribute('href') || '';
+    // For the homepage where links are like "#about"
+    const isDirectAnchor = href.startsWith('#') && href === `#${current}`;
+    // For subpages where links are like "index.html#about"
+    const isIndexAnchor  = href.includes('#') && href.endsWith(`#${current}`);
+
+    link.classList.toggle('active', isDirectAnchor || isIndexAnchor);
+  });
+}
+
+window.addEventListener('scroll', setActiveOnScroll, { passive: true });
+document.addEventListener('DOMContentLoaded', setActiveOnScroll);
+
+// ===== Mobile hamburger =====
+if (menuToggle && siteNav) {
+  menuToggle.addEventListener('click', () => {
+    siteNav.classList.toggle('active');
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!expanded));
+  });
+
+  // Close menu after clicking a nav item (mobile)
+  siteNav.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      siteNav.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// ================================
+// HERO VIDEO: autoplay when visible,
+// pause on last frame
+// ================================
+const heroVideo = document.querySelector('.hero-video');
+
+if (heroVideo) {
+  // Make sure it's muted & inline (good for mobile autoplay)
+  heroVideo.muted = true;
+  heroVideo.playsInline = true;
+
+  // We'll control play/pause in JS, so no need for "loop"
+  // (If you have loop in HTML, you can remove it.)
+
+  // --- IntersectionObserver for visibility-based play/pause ---
+  const playThreshold = 0.6; // 60% visible
+
+  function handleVisibility(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= playThreshold) {
+        // In view → play
+        const playPromise = heroVideo.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {
+            // Autoplay might be blocked; silently ignore
+          });
+        }
+      } else {
+        // Out of view → pause
+        heroVideo.pause();
+      }
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(handleVisibility, {
+      threshold: playThreshold
+    });
+    observer.observe(heroVideo);
+  } else {
+    // Fallback: just try to play once on load
+    heroVideo.play().catch(() => {});
+  }
+
+  // --- Pause on the last frame (no looping) ---
+  heroVideo.addEventListener('timeupdate', () => {
+    const duration = heroVideo.duration;
+    const current  = heroVideo.currentTime;
+
+    if (!isNaN(duration) && duration > 0) {
+      const remaining = duration - current;
+
+      // When we're very close to the end, "stick" to the final frame
+      if (remaining < 0.15) {
+        heroVideo.pause();
+        heroVideo.currentTime = duration - 0.01; // tiny nudge before absolute end
+      }
     }
+  });
+}
+</script>
 
-    window.addEventListener('scroll', setActiveOnScroll, { passive: true });
-    document.addEventListener('DOMContentLoaded', setActiveOnScroll);
-
-    // ===== Mobile hamburger =====
-    menuToggle.addEventListener('click', () => {
-      siteNav.classList.toggle('active');
-      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!expanded));
-    });
-
-    // Close menu after clicking a nav item (mobile)
-    siteNav.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', () => {
-        siteNav.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  </script>
 
 </body>
 </html>
