@@ -193,7 +193,7 @@ main {
 }
 
 /* Sections */
-.section { margin-bottom: 4rem; }
+.section { margin-bottom: 6rem; }
 .section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -321,6 +321,10 @@ main {
    Desktop only (>=769px)
 ========================= */
 @media (min-width: 769px) {
+  .section {
+    scroll-margin-top: 2rem; /* spacing above page */
+  }
+
   /* Masonry layout */
   .project-masonry { column-count: 2; }
 
