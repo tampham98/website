@@ -192,7 +192,7 @@ if (menuToggle && siteNav) {
 
 // ================================
 // HERO VIDEO: autoplay when visible,
-// pause on last frame
+// pause briefly on last frame, then loop
 // ================================
 const heroVideo = document.querySelector('.hero-video');
 
@@ -201,22 +201,36 @@ if (heroVideo) {
   heroVideo.muted = true;
   heroVideo.playsInline = true;
 
-  // We'll control play/pause in JS, so no need for "loop"
-  // (If you have loop in HTML, you can remove it.)
+  const playThreshold = 0.6;      // 60% visible
+  const pauseDuration = 1000;     // pause 1s on last frame
+  let lastIntersectionRatio = 0;  // track visibility
+
+  function safePlay() {
+    const playPromise = heroVideo.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Autoplay might be blocked; silently ignore
+      });
+    }
+  }
 
   // --- IntersectionObserver for visibility-based play/pause ---
-  const playThreshold = 0.6; // 60% visible
-
   function handleVisibility(entries) {
     entries.forEach(entry => {
+      if (entry.target !== heroVideo) return;
+
+      lastIntersectionRatio = entry.intersectionRatio;
+
       if (entry.isIntersecting && entry.intersectionRatio >= playThreshold) {
-        // In view → play
-        const playPromise = heroVideo.play();
-        if (playPromise && typeof playPromise.catch === 'function') {
-          playPromise.catch(() => {
-            // Autoplay might be blocked; silently ignore
-          });
+        // If we're already at the very end, let the "ended" handler manage the restart
+        const duration = heroVideo.duration;
+        if (!isNaN(duration) && duration > 0) {
+          const remaining = duration - heroVideo.currentTime;
+          if (remaining < 0.15 || heroVideo.ended) {
+            return;
+          }
         }
+        safePlay();
       } else {
         // Out of view → pause
         heroVideo.pause();
@@ -231,25 +245,29 @@ if (heroVideo) {
     observer.observe(heroVideo);
   } else {
     // Fallback: just try to play once on load
-    heroVideo.play().catch(() => {});
+    safePlay();
   }
 
-  // --- Pause on the last frame (no looping) ---
-  heroVideo.addEventListener('timeupdate', () => {
+  // --- Pause on the last frame, then loop after a delay ---
+  heroVideo.addEventListener('ended', () => {
     const duration = heroVideo.duration;
-    const current  = heroVideo.currentTime;
 
+    // Stick to the final frame visually
     if (!isNaN(duration) && duration > 0) {
-      const remaining = duration - current;
-
-      // When we're very close to the end, "stick" to the final frame
-      if (remaining < 0.15) {
-        heroVideo.pause();
-        heroVideo.currentTime = duration - 0.01; // tiny nudge before absolute end
-      }
+      heroVideo.pause();
+      heroVideo.currentTime = Math.max(duration - 0.01, 0);
     }
+
+    // After a pause, restart *only if* it's still mostly visible
+    setTimeout(() => {
+      if (lastIntersectionRatio >= playThreshold) {
+        heroVideo.currentTime = 0;
+        safePlay();
+      }
+    }, pauseDuration);
   });
 }
+
 </script>
 
 
