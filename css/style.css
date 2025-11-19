@@ -288,6 +288,13 @@ main {
   margin-bottom: 2rem;
 }
 
+.project-hero video.hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;
+  object-fit: cover;       /* keep it beautifully cropped */
+}
 
 /* Masonry: two columns on desktop, one on mobile */
 .project-masonry {
