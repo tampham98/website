@@ -64,10 +64,16 @@ main {
 
 /* ===== Sidebar (Desktop) ===== */
 .sidebar {
-  position: relative;        
+  position: relative;
   width: 300px;
   background: #F2F2F2;
-  padding: 2rem 1.5rem;            /* keep your base padding */
+  padding: 2rem 1.5rem;   /* ← choose whichever left padding you prefer */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.25rem;
+  height: 100vh;
+}
 
   /* layout */
   display: flex;
@@ -80,18 +86,6 @@ main {
   height: 100vh;                 /* full viewport height */
 }
 
-/* ===== Sidebar / Header – Desktop (default) ===== */
-.sidebar {
-  position: relative;
-  width: 300px;
-  background: #F2F2F2;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1.25rem;
-  height: 100vh;                 /* full viewport height */
-}
 
 .sidebar-inner {
   position: sticky;
