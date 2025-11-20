@@ -75,18 +75,6 @@ main {
   height: 100vh;
 }
 
-  /* layout */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  gap: 1.25rem;
-
-  /* height-aware */
-  height: 100vh;                 /* full viewport height */
-}
-
-
 .sidebar-inner {
   position: sticky;
   top: 2rem;
