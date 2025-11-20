@@ -20,9 +20,6 @@ body {
   --logo-gap: clamp(12px, 6vh, 96px);
 }
 
-/* Sidebar: add height-aware top padding */
-.sidebar { padding-block-start: var(--top-align); }
-
 /* Logo: replace width-based % gap with vh-based gap */
 .logo {
   font-size: 2.5rem;
@@ -38,15 +35,6 @@ body {
   display: inline-block; /* optional but recommended */
 }
 
-
-/* Main content: height-aware top padding */
-main {
-  flex: 1;
-  padding-top: var(--top-align);
-  padding-inline: 3rem; /* keep your side padding */
-  max-width: 1280px;
-}
-
 /* Highlight text */
 .highlight {
   color: #C50752;
@@ -59,7 +47,6 @@ main {
   max-width: 1400px;
   padding: 1% 0%;
   gap: 2rem;
-  align-items: stretch;      /* allow sidebar column to match main height */
 }
 
 /* ===== Sidebar (Desktop) ===== */
@@ -83,13 +70,6 @@ main {
   flex-direction: column;
   height: 100%;
   gap: clamp(8px, 2.5vh, 28px);   /* proportional vertical rhythm */
-}
-
-.logo {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #000;
-  margin: 0 0 var(--logo-gap);
 }
 
 /* Nav block: sits lower, but capped; scrolls if too tall */
@@ -162,15 +142,12 @@ main {
 }
 .menu-toggle svg rect { fill: #000; }
 
-/* Ensure desktop nav shows by default */
-#site-nav { display: block; }
-
 /* =========================
    Main content
 ========================= */
 main {
   flex: 1;
-  padding: 3rem 3rem;
+  padding: var(--top-align) 3rem 3rem;
   max-width: 1280px;
 }
 
