@@ -27,6 +27,8 @@ body {
   color: #000;
   margin-top: 0.2em;              /* tiny nudge for optical alignment */
   margin-bottom: var(--logo-gap); /* space below logo */
+  max-width: 240px;
+  white-space: nowrap;
 }
 
 .logo a {
