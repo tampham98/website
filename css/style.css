@@ -282,7 +282,7 @@ main {
 .m-item img,
 .project-hero img,
 .project-hero .hero-video  {
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
 }
 
 
