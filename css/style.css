@@ -297,7 +297,7 @@ main {
   /* Masonry layout */
   .project-masonry { column-count: 2; }
 
-  .project-masonry .m-item:last-child {
+  .project-masonry .m-item.wide {
   width: 100%;
   column-span: all;
   break-inside: avoid;
