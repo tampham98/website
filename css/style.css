@@ -253,7 +253,7 @@ main {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0.5rem;
+  border-radius: 3px;
   object-fit: cover;       /* keep it beautifully cropped */
 }
 
@@ -267,14 +267,14 @@ main {
 
 .m-item {
   break-inside: avoid;          /* keep each figure intact */
-  margin: 0 0 1.25rem;
+  margin: 0 0 2rem;
 }
 
 .m-item img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: .5rem;         /* match your style */
+  border-radius: 3px;         /* match your style */
 }
 
 /* Global subtle image/video shadow */
