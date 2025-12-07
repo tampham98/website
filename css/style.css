@@ -176,7 +176,7 @@ main {
   align-items: flex-start;
   text-decoration: none;
   color: #383838;
-  border-radius: 8px;
+  border-radius: 3px;
   margin-bottom: 2rem;
   opacity: 90%;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -186,7 +186,7 @@ main {
   height: 275px;
   display: block;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 .project-card h4 { margin: 0.75rem 0 0; font-size: 1rem; color: #000; }
 .project-card p  { margin: 0 0 1rem;     font-size: 1rem; color: #383838; }
