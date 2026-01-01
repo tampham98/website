@@ -254,7 +254,7 @@ main {
   height: auto;
   display: block;
   border-radius: 3px;
-  object-fit: cover;       /* keep it beautifully cropped */
+  object-fit: contain;       /* keep it beautifully cropped */
 }
 
 
