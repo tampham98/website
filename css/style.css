@@ -15,10 +15,10 @@ body {
 }
 
 .footnote {
-  text-align: left;
+  text-align: center;
   font-size: 0.75rem;
-  color: #666666;
-  margin: 4rem 0;
+  color: #737373;
+  margin: 6rem 0;
 }
 /* Height-responsive spacing entire page */
 :root {
