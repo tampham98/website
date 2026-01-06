@@ -45,7 +45,7 @@ body {
 
 /* Highlight text */
 .highlight {
-  color: #C50752;
+  color: #C5076C;
   font-weight: 500; 
 }
 
@@ -121,10 +121,10 @@ body {
 }
 
 .sidebar nav a:hover,
-.sidebar nav a.active { color: #C50752; }
+.sidebar nav a.active { color: #C5076C; }
 .sidebar nav a:hover::before,
 .sidebar nav a.active::before {
-  opacity: 1; width: 80px; background-color: #C50752;
+  opacity: 1; width: 80px; background-color: #C5076C;
 }
 
 /* LinkedIn — same style, no rule, pinned at bottom of the nav column */
@@ -236,10 +236,6 @@ main {
 .skills { display: flex; flex-wrap: wrap; list-style: none; }
 .skills li { font-size: 1rem; color: #2C5282; font-weight: 500; }
 
-
-/* Contact links */
-#contact p a { color: #F48FB1; text-decoration: none; }
-#contact p a:hover { text-decoration: underline; }
 
 /* =========================
  Subpages
