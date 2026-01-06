@@ -234,7 +234,7 @@ main {
 
 /* Skills */
 .skills { display: flex; flex-wrap: wrap; list-style: none; }
-.skills li { font-size: 1rem; color: #A33DBD; font-weight: 500; }
+.skills li { font-size: 1rem; color: #9442A9; font-weight: 500; }
 
 
 /* =========================
