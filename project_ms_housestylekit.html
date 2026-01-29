@@ -4,6 +4,8 @@
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Tam Pham — Portfolio</title>
+        <!-- Favicon -->
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <!-- Your stylesheet -->
     <link rel="stylesheet" href="./css/style.css">
   </head>
@@ -88,9 +90,21 @@
           </figure>
 
 
-          <figure class="m-item wide">
-            <img src="./assets/MS_CommercialHST_mockup5.jpg" alt="..." loading="lazy">
-          </figure>
+  <figure class="m-item wide">
+  <video
+    class="m-video"
+    playsinline
+    muted
+    autoplay
+    loop controls
+    preload="metadata"
+    poster="./assets/MS_CommercialHST_mockup5.jpg"
+  >
+    <source src="./assets/MS_CommercialHST_mockup5.mp4" type="video/mp4">
+    <img src="./assets/MS_CommercialHST_mockup5.jpg" alt="Microsoft Commercial House Style Toolkit video">
+  </video>
+</figure>
+
 
         </section>
 
@@ -122,6 +136,9 @@
       </footer>
       </main>
     </div>
+<button class="back-to-top" type="button" aria-label="Back to top">
+  ↑ Top
+</button>
 
     <!-- JS at the very end so the DOM is loaded -->
     <script>
@@ -155,6 +172,23 @@
         const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
         menuToggle.setAttribute('aria-expanded', String(!expanded));
       });
+  // ===== Back to Top button =====
+const backToTopBtn = document.querySelector('.back-to-top');
+
+if (backToTopBtn) {
+  const showAfter = 600; // px scrolled before showing
+
+  function toggleBackToTop() {
+    backToTopBtn.classList.toggle('is-visible', window.scrollY > showAfter);
+  }
+
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  document.addEventListener('DOMContentLoaded', toggleBackToTop);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
       // Close menu after clicking a nav item (mobile)
       siteNav.querySelectorAll('a[href^="#"]').forEach(a => {
